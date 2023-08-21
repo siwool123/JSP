@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,6 +18,8 @@
     <%
     String loginErr = request.getParameter("loginErr");
     if (loginErr != null) out.print("로그인 실패");
+    Date now = new Date();
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     %>
     <form action="./ResponseLogin.jsp" method="post">
         아이디 : <input type="text" name="user_id" /><br />
@@ -25,7 +29,7 @@
 
     <h2>2. HTTP 응답 헤더 설정하기</h2>
     <form action="./ResponseHeader.jsp" method="get">
-        날짜 형식 : <input type="text" name="add_date" value="2021-12-01 09:00" /><br />  
+        날짜 형식 : <input type="text" name="add_date" value="<%= df.format(now) %>"/><br />  
         숫자 형식 : <input type="text" name="add_int" value="8282" /><br />
         문자 형식 : <input type="text" name="add_str" value="홍길동" /><br />
         <input type="submit" value="응답 헤더 설정 & 출력" />

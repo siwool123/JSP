@@ -1,3 +1,6 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- include 지시어로 파일 포함시키면 컴파일되지않은 원본상태의 코드가 그대로 포함되어 컴파일된다.
@@ -13,6 +16,10 @@
 <%
 out.println("오늘날짜 : "+today);
 out.println("<br>내일날짜 : "+tmrw);
+Date now = new Date();
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 %>
+<p><%= tmrw %></p>
+<p>지금시간 : <%= sdf.format(now) %></p>
 </body>
 </html>
