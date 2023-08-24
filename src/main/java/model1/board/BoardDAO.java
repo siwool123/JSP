@@ -86,7 +86,7 @@ public class BoardDAO extends JDBConnect {
 		}catch(Exception e) {
 			System.out.println("게시물 입력 중 예외발생");
 			e.printStackTrace();
-		}
+		} 
 		return result;
 	}
 	
