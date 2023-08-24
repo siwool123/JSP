@@ -99,7 +99,7 @@ function formValidate(frm){
     //폼 검증이 끝난후 서버로 전송 직후 로딩 이미지를 띄워준다. 
     document.getElementById("id_loading").style.display = 'block';
     //return false;
-    location.href="LoginForm.jsp";
+    //location.href="/JSPStudy/06Session/LoginForm.jsp";
 }
 
 function inputEmail(frm){
@@ -179,7 +179,7 @@ function postOpen(){
 </script>
 </head>
 <body>
-    <form name="myform" action="registAction.jsp" method="post" onsubmit="return formValidate(this);"  target="/JSPStudy/06Session/LoginForm.jsp" >
+    <form name="myform" action="registAction.jsp" method="post" onsubmit="return formValidate(this);" >
         <table class="userTable">
             <colgroup>
                 <col width="130px" />

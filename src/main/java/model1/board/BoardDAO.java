@@ -130,7 +130,8 @@ public class BoardDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 	}
-	
+
+//게시물 수정하기 > 특정일련번호에 해당하는 게시물 수정
 	public int updateEdit(BoardDTO dto) {
 		int result=0;
 		try {

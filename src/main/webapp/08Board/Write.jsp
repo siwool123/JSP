@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="./IsLoggedIn.jsp" %>
+<%@ include file="../Common/Link.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@ function validateForm(form) {
 </script>
 </head>
 <body>
-<jsp:include page="../Common/Link.jsp" />
+<%-- <jsp:include page="../Common/Link.jsp" /> --%>
 <h2>회원제 게시판 - 글쓰기 (Write)</h2>
 <!-- 글쓰기 폼은 반드시 post방식으로 해야한다. get방식은 파일을 첨부할수없고 전송량도 4kb로 제한된다.
 하지만 post는 전송량의 제한이 없고 이미지, 음원등의 파일도 전송할수있기때문 -->

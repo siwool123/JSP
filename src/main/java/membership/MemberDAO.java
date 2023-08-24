@@ -43,40 +43,26 @@ public class MemberDAO extends JDBConnect {
 		return dto;
 	}
 	
-	public int getMemberDTO(String id, String pw, String name, String email, String emailok, String add1, String add2, String add3, String phone, String smsok) {
-//		MemberDTO dto = new MemberDTO();
+	public int memberjoinDTO(MemberDTO dto) {
 		String sql = "INSERT INTO member2 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE)";
 		int affected = 0;
 		try {
 			psmt = con.prepareStatement(sql);
-			psmt.setString(1, id);
-			psmt.setString(2, pw);
-			psmt.setString(3, name);
-			psmt.setString(4, email);
-			psmt.setString(5, emailok);
-			psmt.setString(6, add1);
-			psmt.setString(7, add2);
-			psmt.setString(8, add3);
-			psmt.setString(9, phone);
-			psmt.setString(10, smsok);
+			psmt.setString(1, dto.getId());
+			psmt.setString(2, dto.getPw());
+			psmt.setString(3, dto.getName());
+			psmt.setString(4, dto.getEmail());
+			psmt.setString(5, dto.getEmailok());
+			psmt.setString(6, dto.getAdd1());
+			psmt.setString(7, dto.getAdd2());
+			psmt.setString(8, dto.getAdd3());
+			psmt.setString(9, dto.getPhone());
+			psmt.setString(10, dto.getSmsok());
 			affected = psmt.executeUpdate();
 			
-//			if(rs.next()) { //반환된 rs객체에 정보가있는지 확인
-//				dto.setId(rs.getString(1));
-//				dto.setPw(rs.getString(2));
-//				dto.setName(rs.getString(3));
-//				dto.setEmail(rs.getString(4));
-//				dto.setEmailok(rs.getString(5));
-//				dto.setAdd1(rs.getString(6));
-//				dto.setAdd2(rs.getString(7));
-//				dto.setAdd3(rs.getString(8));
-//				dto.setPhone(rs.getString(9));
-//				dto.setSmsok(rs.getString(10));
-//			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 		return affected;
 	}
 	

@@ -39,7 +39,7 @@ dao.close();
 <form action="" method="get">
 <table border="1" width="90%">
 <tr>
-	<td>
+	<td align="center">
 		<select name="searchField" id="">
 		<option value="title">제목</option>
 		<option value="content">내용</option>

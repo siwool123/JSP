@@ -19,6 +19,10 @@ dao.close();
 <meta charset="UTF-8">
 <title>회원제 게시판</title>
 <script type="text/javascript">
+//게시물삭제위한js함수 > confirm함수는 대화창에서 예 클릭시 true반환된다.
+/* form 태그의 name속성통해 DOM을 얻어온다.
+전송방식과 전송경로를 지정한다 > submit 함수로 폼값전송 
+폼태그하위의 hidden타입설정된 일련번호전송 */
 function deletePost() {
 	var confirmed = confirm("정말로 삭제하시겠습니까?");
     if (confirmed) {
@@ -33,6 +37,8 @@ function deletePost() {
 <body>
 <jsp:include page="../Common/Link.jsp" />
 <h2>회원제 게시판 - 상세보기 (View)</h2>
+<!-- 게시물 삭제위해 hidden타입 input태그하나추가한다.
+삭제버튼클릭시 일련번호를 서버로 전송한다 -->
 <form name="writeFrm">
 	<input type="hidden" name="num" value="<%= num %>" />
 	<table border="1" width="90%">
@@ -65,6 +71,7 @@ function deletePost() {
 			if (session.getAttribute("UserId")!=null && session.getAttribute("UserId").toString().equals(dto.getId())){
 			%>
 			<button type="button" onclick="location.href='Edit.jsp?num=<%= dto.getNum() %>';">수정하기</button>
+<!-- 삭제버튼누르면 js함수 호출. 해당함수는 submit()통해 폼값을서버로전송 -->
 			<button tyep="button" onclick="deletePost();">삭제하기</button>
 			<%	
 			}
