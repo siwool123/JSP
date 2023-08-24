@@ -66,7 +66,7 @@ public class BoardDAO extends JDBConnect {
 				bbs.add(dto); //리스트에 dto추가
 			}
 		}catch(Exception e) {
-			System.out.println("게시물 조회 중 예외발생");
+			System.out.println("게시물 조회 중 예외발생"); 
 			e.printStackTrace();
 		}
 		return bbs;
