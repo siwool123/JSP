@@ -28,8 +28,7 @@ public class BoardDAO extends JDBConnect {
 			stmt = con.createStatement(); //정적 쿼리실행위한 Statement 객체생성
 			rs = stmt.executeQuery(sql);
 			rs.next(); 
-			//커서를 첫번쨰 행으로 이동하여 레코드를 읽는다.
-			//첫번째 컬럼 count(*) 의 값을 가져와서 변수에 저장
+//커서를 첫번쨰 행으로 이동하여 레코드를 읽는다. > 첫번째 컬럼 count(*) 의 값을 가져와서 변수에 저장
 			totalcnt = rs.getInt(1);
 		}catch(Exception e) {
 			System.out.println("게시물 수를 구하는 중 예외발생");
@@ -52,10 +51,9 @@ public class BoardDAO extends JDBConnect {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 //2개 이상의 레코드가 반환될수있으므로 while문 사용
+//setter이용하여 각컬럼값을 멤버변수에 저장	
 			while(rs.next()) {
-				
 				BoardDTO dto = new BoardDTO();
-//setter이용하여 각컬럼값을 멤버변수에 저장				
 				dto.setNum(rs.getString(1));
 				dto.setTitle(rs.getString(2));
 				dto.setContent(rs.getString(3));
@@ -162,5 +160,36 @@ public class BoardDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	public List<BoardDTO> selectListPage(Map<String, Object> map) {
+		List<BoardDTO> bbs = new Vector<BoardDTO>(); 
+/* 검색조선일치하는게시물얻어온후 각페이지에 출력할 쿼리작성 */
+		String sql = "SELECT * FROM (SELECT T1.*, ROWNUM R FROM (SELECT * FROM board";
+		if(map.get("searchWord")!=null) {
+			sql += " WHERE " + map.get("searchField")+ " LIKE '%" + map.get("searchWord") + "%'";
+		}
+		sql += " ORDER BY num DESC) T1) WHERE R BETWEEN ? AND ?";
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, map.get("start").toString());
+			psmt.setString(2, map.get("end").toString());
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				BoardDTO dto = new BoardDTO();
+				dto.setNum(rs.getString(1));
+				dto.setTitle(rs.getString(2));
+				dto.setContent(rs.getString(3));
+				dto.setPostdate(rs.getDate(5));
+				dto.setId(rs.getString(4));
+				dto.setVisitcnt(rs.getString(6));
+				
+				bbs.add(dto); //리스트에 dto추가
+			}
+		}catch(Exception e) {
+			System.out.println("게시물 페이징 조회 중 예외발생"); 
+			e.printStackTrace();
+		}
+		return bbs;
 	}
 }
