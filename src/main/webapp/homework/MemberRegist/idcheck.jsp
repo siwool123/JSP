@@ -3,11 +3,7 @@
     pageEncoding="UTF-8"%>
 <%
 String id = request.getParameter("id");
-String oracleDriver = application.getInitParameter("OracleDriver");
-String oracleURL = application.getInitParameter("OracleURL");
-String oracleId = application.getInitParameter("OracleId");
-String oraclePw = application.getInitParameter("OraclePw");
-MemberDAO dao = new MemberDAO(oracleDriver, oracleURL, oracleId, oraclePw);
+MemberDAO dao = new MemberDAO(application);
 
 %>
 <!DOCTYPE html>

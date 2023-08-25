@@ -2,6 +2,7 @@
 <%@page import="membership.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%
 String id = request.getParameter("id");
 String oracleDriver = application.getInitParameter("OracleDriver");
@@ -192,7 +193,7 @@ function postOpen(){
 </script>
 </head>
 <body>
-
+<%-- <jsp:include page="/JSPStudy/Common/Link.jsp" /> --%>
     <form name="myform" action="registAction.jsp" method="post" onsubmit="return formValidate(this);" target=".../06Session/LoginForm.jsp" >
         <table class="userTable">
             <colgroup>

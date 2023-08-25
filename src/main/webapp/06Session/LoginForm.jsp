@@ -44,7 +44,8 @@ session영역에 해당속성값이 있는지 확인.
         onsubmit="return validateForm(this);">
         아 이 디 : <input type="text" name="user_id" /><br /><br />
         패스워드 : <input type="password" name="user_pw" /><br /><br />
-        <input type="submit" value="로그인하기" />
+        <input type="submit" value="로그인하기" />&nbsp;
+        <button type="button" onclick="location.href='/JSPStudy/homework/MemberRegist/RegiFormValidate.html'">회원가입</button>
     </form>
     <%
     } else {  
