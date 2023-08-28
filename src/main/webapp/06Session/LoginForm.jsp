@@ -21,7 +21,7 @@ session영역에 해당속성값이 있는지 확인.
                 "" : request.getAttribute("LoginErrMsg") %>
     </span>
     <%
-    if (session.getAttribute("UserId") == null) { 
+if (session.getAttribute("UserId") == null) { 
     %>
     <script>
     /* 로그인 폼의 입력값을 검증하기 위한 함수로 빈값인지를 확인한다. */
@@ -55,6 +55,5 @@ session영역에 해당속성값이 있는지 확인.
     <%
     }
     %>
-
 </body>
 </html>

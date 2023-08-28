@@ -22,30 +22,25 @@ MemberDAO dao = new MemberDAO(application);
 </head>
 <body>
 <h2>아이디 중복확인</h2>
-    <div>
-        입력한 아이디 : <%= id %>  
 <%
 if(dao.checkId(id)){
 %>      
-        <p>
-            아이디가 중복되어 사용할 수 없습니다. <br>
-            다른 아이디를 다시 입력해 주세요.
-            
-        </p>
-        <form name="overlapFrm">
-            <input type="text" name="retype_id" size="20" />
-            <input type="button" value="아이디사용하기" onclick="idUse();" />
-        </form>
+   <p>입력한 아이디 <%= id %> 가 중복되어 사용할 수 없습니다. <br>
+      다른 아이디를 다시 입력해 주세요.</p>
+   <form name="overlapFrm">
+      <input type="text" name="id" size="20" />
+      <input type="submit" value="아이디중복확인" />
+   </form>
 <%
 } else {
 %>
-		<p>
-            입력하신 아이디는 사용가능합니다.
-        </p>
+	<p>입력한 아이디 <%= id %> 는 사용가능합니다. </p>
+    <button onclick="idUse();">아이디 사용하기</button>
+    <form name="overlapFrm">
+    <input type="hidden" name="retype_id" value="<%= id %>" />
+    </form>
 <%
 }
 %>
-	
-    </div>
 </body>
 </html>
