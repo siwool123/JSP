@@ -204,3 +204,24 @@ select b.*, m.name from board b, member m where b.id=m.id and num=1;
 
 --내용보기하면 해당게시물 조회수가 1증가한다.
 update board set visitcnt=visitcnt+1 where num=1;
+
+--게시물 수정하기
+update board set title='제목1 수정', content='내용1 수정' where num=1;
+
+--게시물 삭제하기
+delete from board where num=1;
+commit;
+-----------------------------------게시판 페이징 구현하기----------------------------------------
+select * from board where title like '%지금%' order by num desc;
+select rownum, t1.* from (select * from board where title like '%페이징%' order by num desc) t1;
+select * from (select rownum, t1.* from (select * from board where title like '%페이징%' order by num desc) t1) 
+    where rownum between 1 and 10; --1페이지
+    
+select rownum, t1.* from (select * from board order by num desc) t1; 
+
+select * from (select rownum r, t1.* from (select * from board order by num desc) t1) where r between 11 and 20; 
+--2페이지
+select * from (select rownum r, t1.* from (select * from board where title like '%게시물-3%'
+    order by num desc) t1) where r between 11 and 20;
+
+select sal, empno, sum(sal) from emp group by grouping sets(sal, (sal, empno), ()) order by sal;
