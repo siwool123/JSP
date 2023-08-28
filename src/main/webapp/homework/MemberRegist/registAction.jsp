@@ -16,7 +16,7 @@ String phone = request.getParameter("mobile1")+request.getParameter("mobile2")+r
 String smsok = request.getParameter("sms");
 
 /* 회원가입 성공한경우 > 세션 영역에 회원아이디와 이름을 저장 > 로그인페이지로 '이동' 한다.
-회원가입 실패한 경우 > request 영역에 에러메세지 저장 > 회원가입 페이지로 '포워드' 한다. */
+회원가입 실패한 경우 > request 영역에 에러메세지 저장 > 회원가입 페이지로 '포워드' 한다.  */
 int result = 0;
 MemberDTO dto = new MemberDTO();
 dto.setId(id);
