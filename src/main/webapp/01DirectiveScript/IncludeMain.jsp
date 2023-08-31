@@ -21,5 +21,6 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 %>
 <p><%= tmrw %></p>
 <p>지금시간 : <%= sdf.format(now) %></p>
+<%@ include file = "../06Session/LoginForm.jsp" %>
 </body>
 </html>

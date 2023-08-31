@@ -28,6 +28,7 @@ map.put("3rd", new Person("신숙주", 54));
 <!-- set태그로 페이지영역에 변수/속성 저장
 > 해당변수통해 확장for문 실행. items에 지정한 컬렉션에 저장된 객체 갯수만큼 반복하여 list로 하나씩 전달
 > 저장 순서대로 Person 객체를 변수list2에 저장후 getter 통해 멤버변수에 저장된 값출력 -->
+<h4>List 컬렉션 사용하기</h4>
 <c:set var="list" value="<%= list %>" />
 <c:forEach items="${ list }" var="list2">
 	<li>이름 : ${ list2.name }, 나이 : ${ list2.age }</li>

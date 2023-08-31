@@ -1,3 +1,4 @@
+<%@page import="utils.CookieManager"%>
 <%@page import="membership.MemberDTO"%>
 <%@page import="membership.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,6 +7,7 @@
 <% //로그인 폼에서 전송한 폼값을 받는다.
 String userId = request.getParameter("user_id");
 String userPw = request.getParameter("user_pw");
+String idsave = request.getParameter("idsave");
 
 //web.xml에 입력한 컨텍스트 초기화 파라미터를 application 내장객체로 읽어올수있다
 System.out.println(userId+" : "+userPw);
@@ -25,13 +27,16 @@ String oraclePw = application.getInitParameter("OraclePw");
 */
 
 MemberDAO dao = new MemberDAO(oracleDriver, oracleURL, oracleId, oraclePw);
-MemberDTO memberDTO = dao.getMemberDTO(userId, userPw);
+MemberDTO dto = dao.getMemberDTO(userId, userPw);
 dao.close();
 
-if(memberDTO.getId() != null){
-	session.setAttribute("UserId", memberDTO.getId());
-	session.setAttribute("UserName", memberDTO.getName());
+if(dto.getId() != null){
+	if (idsave != null && idsave.equals("y")) CookieManager.makeCookie(response, "loginId2", userId, 86400);
+	else CookieManager.deleteCookie(response, "loginId2");
+	session.setAttribute("UserId", dto.getId());
+	session.setAttribute("UserName", dto.getName());
 	response.sendRedirect("LoginForm.jsp");
+	
 }else{
 	request.setAttribute("LoginErrMsg", "로그인 오류입니다.");
 	request.getRequestDispatcher("LoginForm.jsp").forward(request, response);

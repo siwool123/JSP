@@ -1,5 +1,11 @@
+<%@page import="utils.CookieManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String loginId2 = CookieManager.readCookie(request, "loginId2");
+String cookie = "";
+if(!loginId2.equals("")) cookie = "checked";
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,8 +48,10 @@ if (session.getAttribute("UserId") == null) {
 <!-- 회원정보는 보안이필요하여 반드시 post방식으로 전송해야한다. -->
     <form action="LoginProcess.jsp" method="post" name="loginFrm"
         onsubmit="return validateForm(this);">
-        아 이 디 : <input type="text" name="user_id" /><br /><br />
+        아 이 디 : <input type="text" name="user_id" value="<%= loginId2 %>" /><br /><br />
         패스워드 : <input type="password" name="user_pw" /><br /><br />
+        <input type="checkbox" name="idsave" value="y" <%= cookie %> />&nbsp; 아이디저장&nbsp;&nbsp;
+        <a href="">아이디찾기</a><span> | </span> <a href="">비밀번호찾기</a><br /><br />
         <input type="submit" value="로그인하기" />&nbsp;
         <button type="button" onclick="location.href='/JSPStudy/homework/MemberRegist/RegiFormValidate.html'">회원가입</button>
     </form>

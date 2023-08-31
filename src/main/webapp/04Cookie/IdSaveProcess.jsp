@@ -20,7 +20,7 @@ if("must".equals(user_id) && "1234".equals(user_pw)){
 	}else CookieManager.deleteCookie(response, "loginId");
 	
 //로그인성공경고창띄운후 로그인페이지로 이동 <> 로그인실패시 메세지만띄움
-	JSFunction.alertLocation("로그인에 성공했습니다.", "IdSaveMain.jsp", out);
+	JSFunction.alertLocation("로그인에 성공했습니다.", "/JSPStudy/09BoardPaging/List.jsp", out);
 }else {
 	/* JSFunction.alertBack("로그인에 실패했습니다.", out); */
 %>

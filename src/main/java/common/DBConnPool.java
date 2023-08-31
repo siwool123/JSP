@@ -1,15 +1,14 @@
 package common;
 
-import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-
 
 /* JNDI(Java Naming and Directory Interface) : 
  디렉토리 서비스에서 제공하는 데이터 및 객체를 찾아서 참조(lookup)하는

@@ -1,5 +1,8 @@
 package utils;
 
+import java.io.PrintWriter;
+
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.jsp.JspWriter;
 /* 메소드 생성시 static 통해 정적메소들 정의하면 객체생성없이 클래스명으로 즉시메소드 호출가능
  * 자바클래스에서는 jsp 내장객체를 즉시 사용할수없으므로 반드시 매개변수로 전달받아 사용해야한다.
@@ -17,6 +20,24 @@ public class JSFunction {
 		try {
 			String script = "<script>alert('"+msg+"'); history.back();</script>";
 			out.println(script);
+		}catch(Exception e) {}
+	}
+	
+	public static void alertLocation(HttpServletResponse resp, String msg, String url) {
+		try {
+			resp.setContentType("text/html;charset=UTF-8");
+			PrintWriter writer = resp.getWriter();
+			String script = "<script>alert('"+msg+"'); location.href='"+url+"'; </script>";
+			writer.print(script);
+		}catch(Exception e) {}
+	}
+	
+	public static void alertBack(HttpServletResponse resp, String msg) {
+		try {
+			resp.setContentType("text/html;charset=UTF-8");
+			PrintWriter writer = resp.getWriter();
+			String script = "<script>alert('"+msg+"'); history.back();</script>";
+			writer.print(script);
 		}catch(Exception e) {}
 	}
 }

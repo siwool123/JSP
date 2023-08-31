@@ -20,8 +20,7 @@
 <table border="1">
 <c:forEach begin="3" end="5" var="i" varStatus="loop">
 	<tr>
-<!-- 일반 for문에서 varStatus 속성
-: 반복 관련 정보를 추상화한 클래스 통해 정보 반환
+<!-- 일반 for문에서 varStatus 속성 : 반복 관련 정보를 추상화한 클래스 통해 정보 반환
 count :  실제 반복 순서 반환. 1부터 시작
 index : 변수 i의 변화하는 값 반환
 first : 루프의 처음인경우 true 반환

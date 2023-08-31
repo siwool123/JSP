@@ -21,7 +21,7 @@ checkbox에는 checked  속성부여 -->
 아   이   디 : <input type="text" name="user_id" value="<%= loginId %>"/>
 <input type="checkbox" name="save_check" value="Y" <%= cookieCheck %>/>
 아이디 저장하기 <br /><br />
-패스워드 : <input type="text" name="user_pw"/><br /><br />
+패스워드 : <input type="password" name="user_pw"/><br /><br />
 <input type="submit" value="로그인하기"	/>
 </form>
 </body>

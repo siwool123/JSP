@@ -18,6 +18,9 @@ getParameterValues() : checkbox 혹은 <select>태그의 multiple 속성을 부�
 */
 String id = request.getParameter("id");
 String sex = request.getParameter("sex");
+String etc1 = request.getParameter("etc1");
+String etc2 = request.getParameter("etc2");
+
 //관심사항은 checkbox이므로 2개이상 선택가능하므로 배열로 폼값받는다.
 String[] favo = request.getParameterValues("favo"); 
 String[] grade = request.getParameterValues("grade"); 
@@ -40,6 +43,8 @@ String intro = request.getParameter("intro").replace("\r\n", "<br>");
 <li>관심사항 : <%= favoStr %></li>
 <li>자기소개 : <%= intro %></li>
 <li>학력 : <%= gradeStr %></li>
+<li>관심분야1 : <%= etc1 %></li>
+<li>관심분야2 : <%= etc2 %></li>
 </ul>
 </body>
 </html>

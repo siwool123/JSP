@@ -24,7 +24,7 @@ public class MemberDAO extends JDBConnect {
  * 로그인폼에서입력한 아이디, 비번을 통해 인파라미터를 설정할수있도록 쿼리문작성 */	
 	public MemberDTO getMemberDTO(String uid, String upw) {
 		MemberDTO dto = new MemberDTO();
-		String sql = "SELECT * FROM member WHERE id=? AND pw=?";
+		String sql = "SELECT * FROM member2 WHERE id=? AND pw=?";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, uid);
