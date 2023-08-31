@@ -39,7 +39,7 @@ public class MultiUploadProcess extends HttpServlet {
 				String sFileName = FileUtil.renameFile(sDirectory, i);
 				insertMyFile(req, i, sFileName);
 			}
-			resp.sendRedirect("FileList.jsp"); //업로드 완료되면 파일목록페이지로 이동
+			resp.sendRedirect("FileList.jsp"); //업로드 완료되면 파일목록페이지로 이동 
 		}catch(Exception e) {
 			e.printStackTrace();
 			req.setAttribute("errorMessage", "파일 업로드 오류");
