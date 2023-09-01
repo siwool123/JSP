@@ -91,10 +91,17 @@
 	<url-pattern>/mvcboard/list.do</url-pattern>
 </servlet-mapping>
 
-<!-- 글쓰기 페이지 매핑 -->
+<!-- 글쓰기 페이지 매핑
+모델2(서블릿 방식) 게시판의 글쓰기는 파일첨부기능있으므로 multipart에 대한 설정을 추가해야한다.
+파일업로드 챕터에서는 어노테이션 통해 설정했지만 해당챕터에선 web.xml에서 설정한다
+개별파일 최대크기와 전체파일의 최대크기를 아래처럼 설정한다. -->
 <servlet>
 	<servlet-name>MVCBoardWrite</servlet-name>
 	<servlet-class>model2.mvcboard.WriteController</servlet-class>
+	<multipart-config>
+		<max-file-size>1048576</max-file-size> <!-- 1MB -->
+		<max-request-size>10485760</max-request-size> <!-- 10MB -->
+	</multipart-config>
 </servlet>
 <servlet-mapping>
 	<servlet-name>MVCBoardWrite</servlet-name>

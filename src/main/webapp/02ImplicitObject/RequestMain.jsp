@@ -111,6 +111,20 @@ $(function () {
         <select name="etc2" id="etc2" style="width: 200px;">
             <option value="">선택하세요</option>
         </select> <br /><br />
+        
+        <ul class="userTable2 mt-5">
+            <li><input type="checkbox" id="chkAll" name="chkAll" value="y"> &nbsp; 모든 약관에 동의합니다. 
+            <a href="" >[전체보기]</a></li>
+            <li><input type="checkbox" name="chk" value="a"> &nbsp; [필수] 이용약관 <a href="" >[전체보기]</a></li>
+            <li><input type="checkbox" name="chk" value="b"> &nbsp; [필수] 개인정보처리방침 <a href="" >[전체보기]</a>
+            </li>
+            <li><input type="checkbox" name="chk" value="c"> &nbsp; [필수] 개인정보 수집 및 이용동의 
+            <a href="" >[전체보기]</a> </li>
+            <li>[선택] 마케팅수신동의 
+            	<input type="checkbox" class="chk" name="mailok" value="y" style="margin-left: 20px;">&nbsp; 이메일
+                <input type="checkbox" class="chk" name="smsok" value="y" style="margin-left: 20px;"> &nbsp; 휴대폰
+            </li>
+        </ul>
         <input type="submit" value="전송하기" />
     </form>
 

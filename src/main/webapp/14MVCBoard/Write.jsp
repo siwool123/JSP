@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,7 @@ function validateForm(form) {
         return false;
     }
     if (!form.content.value) {
-        alert("제목을 입력하세요.");
+        alert("내용을 입력하세요.");
         form.content.focus();
         return false;
     }
@@ -51,7 +52,9 @@ function validateForm(form) {
 	</tr>
 	<tr>
 		<td>첨부파일</td>
-		<td><input type="file" name="ofile" multiple /></td>
+		<td><input type="file" name="ofile" multiple />
+		<p>개별 파일 용량은 1MB까지 업로드 가능합니다.</p>
+		</td>
 	</tr>
 	<tr>
 		<td>비밀번호</td>

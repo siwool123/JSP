@@ -53,8 +53,11 @@ a {text-decoration: none;}
 				<td>${ row.visitcnt }</td>
 				<td>${ row.postdate }</td>
 				<td>
+<!-- 첨부한파일 있는 경우에만 다운로드 링크 출력
+해당링크의 매개변수는 원본파일명, 저장파일명, 일련번호 3개로 구성된다. 
+특히 일련번호는 다운로드횟수증가에 사용됨 -->
 				<c:if test="${ not empty row.ofile }">
-					<a href="../mbcboard/download.do?ofile=${ row.ofile }&sfile=${ row.sfile }&idx=${ row.idx }">[DOWN]</a>
+					<a href="../mvcboard/download.do?ofile=${ row.ofile }&sfile=${ row.sfile }&idx=${ row.idx }">[DOWN]</a>
 				</c:if>
 				</td>
 			</tr>

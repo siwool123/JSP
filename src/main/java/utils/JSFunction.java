@@ -23,8 +23,13 @@ public class JSFunction {
 		}catch(Exception e) {}
 	}
 	
+/* 상단 2개의 메서드는 jsp에서 사용하기위해 정의했다. jsp에서 out 내장객체 전달하면 매개변수로 받아서 사용한다
+ * 아래 2개는 서블릿에서 사용하기위해 메서드오버로딩통해 정의했다
+ * 서블릿이 직접 요청 받으므로 response 내장객체 통해 화면출력용도인 printwriter 객체 생성하여 사용한다
+ */
 	public static void alertLocation(HttpServletResponse resp, String msg, String url) {
 		try {
+		//컨텐츠 타입설정 > PrintWriter 객체통해 스크립트를 서블릿에서 직접 출력
 			resp.setContentType("text/html;charset=UTF-8");
 			PrintWriter writer = resp.getWriter();
 			String script = "<script>alert('"+msg+"'); location.href='"+url+"'; </script>";

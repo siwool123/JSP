@@ -1,6 +1,7 @@
 package model2.mvcboard;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import fileupload.FileUtil;
 import jakarta.servlet.ServletException;
@@ -19,24 +20,28 @@ public class WriteController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)	throws ServletException, IOException { 
-	//1. 파일업로드처리 > 업로드디렉토리의 물리적 경로 확인
+	//1. 파일업로드처리 > 업로드될 디렉토리의 물리적 경로 확인
 	String sDirectory = req.getServletContext().getRealPath("/Uploads");
-
+	
 	String oFileName = ""; //파일업로드 
 	try { 
 		oFileName = FileUtil.uploadFile(req, sDirectory); 
 	}catch(Exception e) { 
-		JSFunction.alertLocation(resp, "파일 업로드 오류입니다", "../mvcboard/write.do"); return; 
+		e.printStackTrace();
+		JSFunction.alertBack(resp, "개별 파일 용량은 1MB까지 업로드 가능합니다.");
+		return; 
 	}
 
-	//2. 파일업로드 외 처리 > 폼값을 dto에 저장 
+	//2. 파일업로드 외 처리 > 첨부파일 이외의 폼값을 dto에 저장 
 	MVCBoardDTO dto = new MVCBoardDTO();
 	dto.setName(req.getParameter("name"));
 	dto.setTitle(req.getParameter("title"));
 	dto.setContent(req.getParameter("content"));
 	dto.setPw(req.getParameter("pw"));
 
-	//원본 파일명과 저장된 파일명 설정
+	/* 첨부파일이 정상적으로 등록되어 원본파일명 반환됐다면 > 
+	 * 파일명을 날짜_시간.확장자 형식으로 변경 > 원본과 변경된 파일명을 DTO에 저장
+	 */
 	if(oFileName!="") {
 		String sFileName = FileUtil.renameFile(sDirectory, oFileName);
 		dto.setOfile(oFileName); //원본파일명 세팅
